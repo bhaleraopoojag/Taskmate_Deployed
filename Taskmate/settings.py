@@ -20,7 +20,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -119,6 +119,7 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS=[STATIC_DIR]
+STATIC_ROOT=Path.joinpath(BASE_DIR,"staticfiles")
 
 CRISPY_TEMPLATE_PACK='bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS='bootstrap5'
