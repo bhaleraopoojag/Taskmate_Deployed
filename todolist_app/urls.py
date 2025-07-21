@@ -7,6 +7,6 @@ urlpatterns = [
     path('delete/<taskid>',views.deleteTask,name='deleteTask'),
     path('edit/<taskid>',views.editTask,name='editTask'),
     path('complete/<taskid>',views.completestatus,name='completestatus'),
-    path('pending/<taskid>',views.pendingstatus,name='pendingstatus')
+    path('pending/<taskid>',views.pendingstatus,name='pendingstatus'),
     
 ]

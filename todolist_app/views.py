@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from todolist_app.models import tasklistmodel
-from todolist_app.forms import taskform
+from todolist_app.models import tasklistmodel,contactmodel
+from todolist_app.forms import taskform,contactform
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
@@ -66,7 +66,20 @@ def pendingstatus(request,taskid):
     return redirect('todolist')
 
 def contact(request):
-    return render(request,'contact.html')
+    if request.method=="POST":
+        form=contactform(request.POST)
+        if form.is_valid():
+            contactmodel.objects.create(
+                name=form.cleaned_data['name'],
+                email=form.cleaned_data['email'],
+                message=form.cleaned_data['message']
+            )
+            # return redirect()
+        # refresh your fileds after saving tha data in db
+        form=contactform()
+    else:
+        form=contactform()
+    return render(request,'contact.html',{'form':form})
 
 def about(request):
     return render(request,'about.html')

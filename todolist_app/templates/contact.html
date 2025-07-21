@@ -2,7 +2,12 @@
 {%block title%}<title>Contact</title>{%endblock title%}
 {% block content %}
 <div class="container">
-<h1>dhvbfjvb</h1>
-
+<h1>Contact Us..</h1>
+{{message}}
+<form method="POST">
+    {%csrf_token%}
+{{form}}
+<button type="submit" class="btn btn-primary mt-3">SEND</button>
+</form>
 </div>
 {% endblock content %}
